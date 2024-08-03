@@ -1,10 +1,8 @@
-import styles from './react-ui.module.scss';
-
 export function ReactUi() {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to ReactUi!</h1>
-    </div>
+    <h1 className="text-3xl text-amber-400 font-bold underline">
+      Hello world!!!!
+    </h1>
   );
 }
 

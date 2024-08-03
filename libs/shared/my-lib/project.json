@@ -1,0 +1,37 @@
+{
+  "name": "my-lib",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/my-lib/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/shared/my-lib/ng-package.json",
+        "tailwindConfig": "libs/shared/my-lib/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared/my-lib/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared/my-lib/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/my-lib/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
