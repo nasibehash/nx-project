@@ -93,8 +93,16 @@
       },
       "library": {
         "style": "scss",
-        "linter": "eslint"
+        "linter": "eslint",
+        "unitTestRunner": "none"
       }
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   }
 }

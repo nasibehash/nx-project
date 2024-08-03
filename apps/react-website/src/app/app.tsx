@@ -1,7 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-
-import NxWelcome from './nx-welcome';
+import { ReactUi } from '@nx-project/react-ui';
 
 export function App() {
   return (
@@ -9,6 +6,7 @@ export function App() {
       <h1 className="text-3xl text-amber-400 font-bold underline">
         Hello world!!!!
       </h1>
+      <ReactUi />
     </div>
   );
 }
