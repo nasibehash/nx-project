@@ -10,16 +10,33 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-project/angular-ui": ["libs/angular-ui/src/index.ts"],
-      "@nx-project/buildable-lib": ["libs/shared/buildable-lib/src/index.ts"],
-      "@nx-project/my-lib": ["libs/shared/my-lib/src/index.ts"],
-      "@nx-project/react-ui": ["libs/react-ui/src/index.ts"]
+      "@nx-project/angular-ui": [
+        "libs/angular-ui/src/index.ts"
+      ],
+      "@nx-project/buildable-lib": [
+        "libs/shared/buildable-lib/src/index.ts"
+      ],
+      "@nx-project/home": [
+        "libs/angular-dashboard/home/src/index.ts"
+      ],
+      "@nx-project/my-lib": [
+        "libs/shared/my-lib/src/index.ts"
+      ],
+      "@nx-project/react-ui": [
+        "libs/react-ui/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

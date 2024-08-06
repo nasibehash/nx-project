@@ -4,14 +4,16 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'lib-home',
   standalone: true,
-  imports: [CommonModule,RouterOutlet],
-  templateUrl: './layout.component.html',
+  imports: [CommonModule],
+  templateUrl: './home.component.html',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutComponent {}
+export class HomeComponent {
+  title = 'home';
+
+}
