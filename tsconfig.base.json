@@ -21,17 +21,14 @@
       "@nx-project/angular-ui": [
         "libs/angular-ui/src/index.ts"
       ],
-      "@nx-project/buildable-lib": [
-        "libs/shared/buildable-lib/src/index.ts"
+      "@nx-project/auth": [
+        "libs/angular-dashboard/auth/src/index.ts"
       ],
       "@nx-project/home": [
         "libs/angular-dashboard/home/src/index.ts"
       ],
-      "@nx-project/my-lib": [
-        "libs/shared/my-lib/src/index.ts"
-      ],
-      "@nx-project/react-ui": [
-        "libs/react-ui/src/index.ts"
+      "@nx-project/user": [
+        "libs/shared/common/user/src/index.ts"
       ]
     }
   },

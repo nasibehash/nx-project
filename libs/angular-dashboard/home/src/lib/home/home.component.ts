@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
-  Component,
+  Component, inject,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from '@nx-project/user';
 
 @Component({
   selector: 'lib-home',
@@ -16,4 +18,11 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   title = 'home';
 
+  authService = inject(AuthService);
+  router = inject(Router);
+
+  onLogout(): void {
+    // this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
