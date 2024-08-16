@@ -1,19 +1,16 @@
-<div class="flex flex-col justify-around items-center gap-8">
-  <h2 class="m-2 text-2xl text-gray-900">Login</h2>
-  <form (submit)="onLogin()" class="flex flex-col items-center">
-    <div class="flex flex-row gap-2 mb-2">
-      <label class="text-blue-500 text-xl" for="username">Username:</label>
-      <input class="border-2 text-gray-600 p-1.5 rounded-md" type="text" id="username" [(ngModel)]="username"
-             name="username">
-    </div>
-    <div class="flex flex-row gap-2 mb-2">
-      <label class="text-blue-500 text-xl" for="password">Password:</label>
-      <input class="border-2 text-gray-600 p-1.5 rounded-md" type="password" id="password" [(ngModel)]="password"
-             name="password">
-    </div>
+<div class="flex flex-col justify-around items-center h-screen">
+  <form (submit)="onLogin()"
+        class="flex flex-col gap-4  w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
+    <h2 class="m-2 text-2xl text-gray-900">Login</h2>
+    <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="text" id="username"
+           placeholder="userName" [(ngModel)]="username"
+           name="username">
+    <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="password" id="password"
+           placeholder="password" [(ngModel)]="password"
+           name="password">
     <div *ngIf="loginError" class="text-red-500 m-1">Invalid username or password</div>
     <button
-      class="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm bg-primary-600 ring-1 ring-primary hover:bg-primary-700 hover:ring-primary-700"
+      class="w-full inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm bg-primary-600 ring-1 ring-primary hover:bg-primary-700 hover:ring-primary-700"
       type="submit">Login
     </button>
   </form>
