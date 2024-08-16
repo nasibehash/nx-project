@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        '128': '32rem',
+      },
       colors: {
         primary: {
           ...colors.indigo,

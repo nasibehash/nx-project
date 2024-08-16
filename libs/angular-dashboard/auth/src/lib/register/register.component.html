@@ -1,21 +1,17 @@
 <div class="flex flex-col justify-around items-center h-screen">
-  <form (submit)="onLogin()"
-        class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
-    <h2 class="m-2 text-2xl text-gray-900">Login</h2>
+  <form (submit)="onRegister()"  class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
+<h2 class="m-2 text-2xl text-gray-900">Register</h2>
     <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="text" id="username"
            placeholder="userName" [(ngModel)]="username"
            name="username">
     <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="password" id="password"
            placeholder="password" [(ngModel)]="password"
            name="password">
-    <div *ngIf="loginError" class="text-red-500 m-1">Invalid username or password</div>
+    <div *ngIf="registerError" class="error-message">Username already exists</div>
+    <div *ngIf="registerSuccess" class="success-message">Registration successful! Redirecting to login...</div>
     <button
       class="w-full inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm bg-primary-600 ring-1 ring-primary hover:bg-primary-700 hover:ring-primary-700"
-      type="submit">Login
+      type="submit">Register
     </button>
-    <div class="p-1 m-2 border-t-2 border-gray-400">
-      <p>Don't have an account? <a class="text-blue-500" routerLink="/auth/register">Register</a></p>
-    </div>
   </form>
 </div>
-
