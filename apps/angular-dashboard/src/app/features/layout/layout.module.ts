@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
+import { AuthGuard } from '@nx-project/user';
 
 
 @NgModule({
@@ -9,6 +10,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
   imports: [
     CommonModule,
     LayoutRoutingModule
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class LayoutModule { }

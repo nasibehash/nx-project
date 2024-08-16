@@ -22,7 +22,7 @@ export class HomeComponent {
   router = inject(Router);
 
   onLogout(): void {
-    // this.authService.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

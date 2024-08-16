@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, RouterOutlet, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
