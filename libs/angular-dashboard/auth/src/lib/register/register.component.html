@@ -1,15 +1,15 @@
 <div class="flex flex-col justify-around items-center h-screen">
-  <form (submit)="onRegister()"
+  <form [formGroup]="registerForm" (submit)="onRegister()"
         class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
     <h2 class="m-2 text-2xl text-gray-900">Register</h2>
     <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="text" id="username"
-           placeholder="userName" [(ngModel)]="username"
+           placeholder="userName" formControlName="userName"
            name="username">
     <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="password" id="password"
-           placeholder="password" [(ngModel)]="password"
+           placeholder="password" formControlName="password"
            name="password">
-    <div *ngIf="registerError" class="error-message">Username already exists</div>
-    <div *ngIf="registerSuccess" class="success-message">Registration successful! Redirecting to login...</div>
+    <div *ngIf="registerError" class="text-red-500">Username already exists</div>
+    <div *ngIf="registerSuccess" class="text-green-500">Registration successful! Redirecting to login...</div>
     <button
       class="w-full inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm bg-primary-600 ring-1 ring-primary hover:bg-primary-700 hover:ring-primary-700"
       type="submit">Register

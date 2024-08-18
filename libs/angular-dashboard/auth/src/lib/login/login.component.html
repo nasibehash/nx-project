@@ -1,12 +1,12 @@
 <div class="flex flex-col justify-around items-center h-screen">
-  <form (submit)="onLogin()"
+  <form [formGroup]="loginForm" (submit)="onLogin()"
         class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
     <h2 class="m-2 text-2xl text-gray-900">Login</h2>
     <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="text" id="username"
-           placeholder="userName" [(ngModel)]="username"
+           placeholder="userName" formControlName="userName"
            name="username">
     <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="password" id="password"
-           placeholder="password" [(ngModel)]="password"
+           placeholder="password" formControlName="password"
            name="password">
     <div *ngIf="loginError" class="text-red-500 m-1">Invalid username or password</div>
     <button
