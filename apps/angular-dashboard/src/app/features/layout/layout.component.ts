@@ -1,27 +1,20 @@
 import {
   ChangeDetectionStrategy,
-  Component, inject,
+  Component,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
-import { AuthService } from '@nx-project/user';
+import { RouterOutlet } from '@angular/router';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, SideBarComponent, TopBarComponent],
   templateUrl: './layout.component.html',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-
-  authService = inject(AuthService);
-  router = inject(Router);
-
-  onLogout(): void {
-    this.authService.logout();
-    this.router.navigate(['/auth/login']);
-  }
 }
