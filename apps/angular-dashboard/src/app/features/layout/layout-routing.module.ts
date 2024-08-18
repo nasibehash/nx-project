@@ -7,11 +7,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('@nx-project/home').then((lib) => lib.homeRoutes),
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('@nx-project/auth').then((lib) => lib.authRoutes),
-  },
+  }
 ];
 
 @NgModule({

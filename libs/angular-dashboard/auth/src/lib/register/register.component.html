@@ -1,10 +1,11 @@
 <div class="flex flex-col justify-around items-center h-screen">
-  <form (submit)="onRegister()"  class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
-<h2 class="m-2 text-2xl text-gray-900">Register</h2>
-    <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="text" id="username"
+  <form (submit)="onRegister()"
+        class="flex flex-col gap-4 w-80 items-center p-4 rounded-md border-solid border-2 border-gray-100">
+    <h2 class="m-2 text-2xl text-gray-900">Register</h2>
+    <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="text" id="username"
            placeholder="userName" [(ngModel)]="username"
            name="username">
-    <input class="border-2 w-full text-gray-600 p-1 rounded-md" type="password" id="password"
+    <input class="border-2 w-full text-gray-600 p-1 rounded-md outline-none" type="password" id="password"
            placeholder="password" [(ngModel)]="password"
            name="password">
     <div *ngIf="registerError" class="error-message">Username already exists</div>

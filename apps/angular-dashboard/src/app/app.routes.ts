@@ -7,4 +7,8 @@ export const appRoutes: Route[] = [
     component: LayoutComponent,
     loadChildren: () => import('./features/layout/layout.module').then((m) => m.LayoutModule),
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('@nx-project/auth').then((lib) => lib.authRoutes),
+  },
 ];
