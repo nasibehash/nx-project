@@ -7,6 +7,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('@nx-project/home').then((lib) => lib.homeRoutes),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('@nx-project/users').then((lib) => lib.usersRoutes),
+    canActivate: [AuthGuard]
   }
 ];
 

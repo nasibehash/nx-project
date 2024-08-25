@@ -3,10 +3,10 @@
 </div>
 <div id="menu" class="border-t gap-4 ">
   @for (item of sidebarItems; track $index) {
-  <div class="flex flex-row p-3 gap-3" [ngClass]="item.isActive ? 'bg-gray-200' : ''"
+  <div class="flex flex-row p-3 gap-3" [ngClass]="item.isActive ? 'bg-blue-200 text-white rounded-lg' : 'text-gray-900'"
    (click)="navigate(item)">
 <span class="">{{item.icon}}</span>
-      <span class="text-gray-900">{{item.text}}</span>
+      <span>{{item.text}}</span>
     </div>
   }
 </div>

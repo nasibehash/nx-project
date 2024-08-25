@@ -6,11 +6,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '@nx-project/user';
+import { ChartComponent } from 'chart-lib';
 
 @Component({
   selector: 'lib-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ChartComponent],
   templateUrl: './home.component.html',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
