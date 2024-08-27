@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file source-language="en" target-language="fa" datatype="plaintext" original="ng2.template">
+<body>
+<trans-unit id="homePageTitle" datatype="html">
+<source>Welcome to our application</source>
+<target>به اپلیکیشن ما خوش آمدید</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
