@@ -1,26 +1,28 @@
 import {
   ChangeDetectionStrategy,
-  Component,
+  Component, input,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { DropDownComponent } from '@nx-project/ui-component';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, DropDownComponent],
   templateUrl: './nav-bar.component.html',
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavBarComponent {
   hiddenMenu: boolean = true;
-  language: string = 'en';
+  language: string = 'En';
+  options = input<any>(['En', 'Fa']);
 
   constructor(private translateService: TranslateService) {
-    translateService.addLangs(['en', 'fa']);
-    translateService.setDefaultLang('en');
+    translateService.addLangs(this.options());
+    translateService.setDefaultLang('En');
   }
 
   switchLang(lang: string) {

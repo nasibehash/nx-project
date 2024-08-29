@@ -10,18 +10,39 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-project/angular-ui": ["libs/angular-ui/src/index.ts"],
-      "@nx-project/auth": ["libs/angular-dashboard/auth/src/index.ts"],
-      "@nx-project/home": ["libs/angular-dashboard/home/src/index.ts"],
-      "@nx-project/user": ["libs/shared/common/user/src/index.ts"],
-      "@nx-project/users": ["libs/angular-dashboard/users-list/src/index.ts"],
-      "chart-lib": ["libs/chart/src/index.ts"]
+      "@nx-project/angular-ui": [
+        "libs/angular-ui/src/index.ts"
+      ],
+      "@nx-project/auth": [
+        "libs/angular-dashboard/auth/src/index.ts"
+      ],
+      "@nx-project/home": [
+        "libs/angular-dashboard/home/src/index.ts"
+      ],
+      "@nx-project/ui-component": [
+        "libs/shared/common/ui-component/src/index.ts"
+      ],
+      "@nx-project/user": [
+        "libs/shared/common/user/src/index.ts"
+      ],
+      "@nx-project/users": [
+        "libs/angular-dashboard/users-list/src/index.ts"
+      ],
+      "chart-lib": [
+        "libs/chart/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
