@@ -6,6 +6,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DropDownComponent } from '@nx-project/ui-component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -18,9 +19,26 @@ import { DropDownComponent } from '@nx-project/ui-component';
 export class NavBarComponent {
   hiddenMenu: boolean = true;
   language: string = 'En';
+
+  menuItems = [{
+    name: 'MENU.HOME',
+    url: '/home',
+    isActive: false
+  },
+    {
+      name: 'MENU.ABOUT',
+      url: '/about',
+      isActive: false
+    },
+    {
+      name: 'MENU.CONTACT',
+      url: '/contact',
+      isActive: false
+    },
+  ];
   options = input<any>(['En', 'Fa']);
 
-  constructor(private translateService: TranslateService) {
+  constructor(private translateService: TranslateService, private router: Router) {
     translateService.addLangs(this.options());
     translateService.setDefaultLang('En');
   }
@@ -36,5 +54,14 @@ export class NavBarComponent {
 
   closeMenu() {
     this.hiddenMenu = true;
+  }
+
+  goToPage(item: { name: string, url: string, isActive: boolean }) {
+    const prevItem = this.menuItems.find((i) => i.isActive);
+    if (prevItem) {
+      prevItem.isActive = false;
+    }
+    item.isActive = true;
+    this.router.navigateByUrl(item.url);
   }
 }
