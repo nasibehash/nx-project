@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-contact-page',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.css',
+  templateUrl: './contact-page.component.html'
 })
-export class ContactPageComponent {}
+export class ContactPageComponent {
+}
