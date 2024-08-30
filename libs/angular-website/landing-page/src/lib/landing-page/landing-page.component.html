@@ -1,30 +1,30 @@
-<div class="max-w-sm mx-auto bg-white shadow pt-6 pb-4 px-6">
-  <form>
+<div class="w-screen h-screen shadow pt-6 pb-4 px-6">
+  <form class="max-w-sm mx-auto bg-white ">
     <legend>{{'THEME' | translate}}</legend>
     <div class="grid grid-flow-col mt-4 ">
-      <label for="theme-1" class="text-sm font-medium text-slate-700">
+      <label (click)="changeTheme(false)" for="theme-2" class="text-sm font-medium text-slate-700">
         <div
           class="relative h-16 w-16 rounded-xl forced-colors:border-0 bg-gray-100 border border-1 text-white hover:bg-slate-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-50 grid items-center justify-center">
-          <input type="radio" name="themes" id="theme-1" class="forced-colors:appearance-auto appearance-none"
-                 checked="">
-          <p class="forced-colors:block hidden">
-            Dark
-          </p>
-          <div class="absolute left-3 top-3 h-6 w-6 rounded-full bg-gray-200 forced-colors:hidden"></div>
-          <div
-            class="absolute bottom-3 right-3 h-6 w-6 rounded-full bg-gray-900 ring-2 ring-current forced-colors:hidden"></div>
-        </div>
-      </label>
-      <label for="theme-2" class="text-sm font-medium text-slate-700">
-        <div
-          class="relative h-16 w-16 rounded-xl forced-colors:border-0 bg-gray-100 border border-1 text-white hover:bg-slate-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-50 grid items-center justify-center">
-          <input type="radio" name="themes" id="theme-2" class="forced-colors:appearance-auto appearance-none">
+          <input checked type="radio" name="themes" id="theme-2" class="forced-colors:appearance-auto appearance-none">
           <p class="forced-colors:block hidden">
             Blue
           </p>
           <div class="absolute left-3 top-3 h-6 w-6 rounded-full border-1 bg-gray-200 forced-colors:hidden"></div>
           <div
             class="absolute bottom-3 right-3 h-6 w-6 rounded-full bg-white ring-2 ring-current forced-colors:hidden"></div>
+        </div>
+      </label>
+      <label (click)="changeTheme(true)" for="theme-1" class="text-sm font-medium text-slate-700">
+        <div
+          class="relative h-16 w-16 rounded-xl forced-colors:border-0 bg-gray-100 border border-1 text-white hover:bg-slate-50 has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-50 grid items-center justify-center">
+          <input type="radio" name="themes" id="theme-1" class="forced-colors:appearance-auto appearance-none"
+          >
+          <p class="forced-colors:block hidden">
+            Dark
+          </p>
+          <div class="absolute left-3 top-3 h-6 w-6 rounded-full bg-gray-200 forced-colors:hidden"></div>
+          <div
+            class="absolute bottom-3 right-3 h-6 w-6 rounded-full bg-gray-900 ring-2 ring-current forced-colors:hidden"></div>
         </div>
       </label>
     </div>

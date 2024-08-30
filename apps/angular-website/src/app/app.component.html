@@ -1,4 +1,5 @@
-<div [ngStyle]="language === 'En' ? {'direction':'ltr'}: {'direction':'rtl'} ">
+<div [ngClass]=" theme ? 'bg-black' : 'bg-white'"
+     [ngStyle]="language === 'En' ? {'direction':'ltr'}: {'direction':'rtl'} ">
   <app-nav-bar></app-nav-bar>
   <router-outlet></router-outlet>
 </div>
