@@ -32,14 +32,19 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    if (this.authService.login(this.loginForm.value['userName'], this.loginForm.value['password'])) {
-      this.router.navigate(['/home']);
-    } else {
-      this.loginError = true;
-      this.loginForm.patchValue({
-        userName: null,
-        password: null,
-      });
-    }
+    this.authService.login(this.loginForm.value['userName'], this.loginForm.value['password']).subscribe({
+      next: (response) => {
+        console.log('Login successful! Token: ', response.token);
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.log('Login failed: ', (error));
+        this.loginError = true;
+        this.loginForm.patchValue({
+          userName: null,
+          password: null,
+        });
+      }
+    });
   }
 }
