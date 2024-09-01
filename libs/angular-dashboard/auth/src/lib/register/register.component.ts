@@ -33,18 +33,23 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister(): void {
-    if (this.authService.register(this.registerForm.value['userName'], this.registerForm.value['password'])) {
-      this.registerSuccess = true;
-      this.registerError = false;
-      this.router.navigate(['/auth/login']);
-    } else {
-      this.registerError = true;
-      this.registerSuccess = false;
-      this.registerForm.patchValue({
-        userName: null,
-        password: null,
-      });
-    }
+    this.authService.register(this.registerForm.value['userName'], this.registerForm.value['password']).subscribe({
+      next: (response) => {
+        console.log('response', response);
+        this.registerSuccess = true;
+        this.registerError = false;
+        this.router.navigate(['/auth/login']);
+      },
+      error: (error) => {
+        this.registerError = true;
+        this.registerSuccess = false;
+        this.registerForm.patchValue({
+          userName: null,
+          password: null,
+        });
+        console.log('error', error);
+      }
+    });
   }
 
 }

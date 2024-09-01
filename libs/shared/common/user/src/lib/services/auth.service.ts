@@ -1,45 +1,50 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/auth.model';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = false;
+  private baseUrl = 'http://localhost:3000';
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(){
-    const users  = localStorage.getItem('users');
-    if (!users) {
-      localStorage.setItem('users', JSON.stringify([{ username: 'test', password: 'test' }]));
-    }
-  }
-  register(username: string, password: string): boolean {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const userExists = users.some((u: User) => u.username === username);
-
-    if (!userExists) {
-      users.push({ username, password });
-      localStorage.setItem('users', JSON.stringify(users));
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) {
   }
 
-  login(username: string, password: string): boolean {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find((u: User) => u.username === username && u.password === password);
-    if (user) {
-      this.isAuthenticated = true;
-      return true;
-    }
-    return false;
+  register(username: string, password: string): Observable<any> {
+    const url = `${this.baseUrl}/register`;
+    const body = {username, password};
+    return this.http.post(url, body);
+  }
+
+  login(username: string, password: string): Observable<any> {
+    const url = `${this.baseUrl}/login`;
+    const body = {username, password};
+
+    return this.http.post<any>(url, body).pipe(
+      tap(response => {
+        if (response.token) {
+          // Store the token
+          localStorage.setItem('authToken', response.token);
+          this.isAuthenticatedSubject.next(true); // Update authentication status
+        }
+      })
+    );
   }
 
   logout(): void {
-    this.isAuthenticated = false;
+    // Remove the token
+    localStorage.removeItem('authToken');
+    this.isAuthenticatedSubject.next(false); // Update authentication status
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated;
+  isAuthenticated(): boolean {
+    return this.isAuthenticatedSubject.value;
+  }
+
+  private hasToken(): boolean {
+    return !!localStorage.getItem('authToken');
   }
 }
