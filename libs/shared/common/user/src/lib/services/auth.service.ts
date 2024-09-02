@@ -63,7 +63,6 @@ export class AuthService {
     try {
       const payload = token.split('.')[1];
       const decodedPayload = atob(payload);
-      console.log('df', decodedPayload);
       return JSON.parse(decodedPayload);
     } catch (e) {
       console.error('Failed to decode token:', e);
