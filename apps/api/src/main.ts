@@ -61,6 +61,26 @@ app.post('/login', async (req, res) => {
   return res.status(200).json({message: 'Login successful.', token});
 });
 
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (token == null) return res.sendStatus(401); // If no token, return Unauthorized
+
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) return res.sendStatus(403); // If token is invalid, return Forbidden
+
+    req.user = user;
+    next(); // Pass the execution to the next middleware or route handler
+  });
+}
+
+// Users list endpoint with authentication
+app.get('/users', authenticateToken, (req, res) => {
+  const userList = Object.keys(users).map(username => ({ username }));
+  return res.status(200).json({ users: userList });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

@@ -28,6 +28,7 @@ export class AuthService {
         if (response.token) {
           // Store the token
           localStorage.setItem('authToken', response.token);
+          this.setLogoutTimer(response.token);
           this.isAuthenticatedSubject.next(true); // Update authentication status
         }
       })
@@ -45,6 +46,45 @@ export class AuthService {
   }
 
   private hasToken(): boolean {
-    return !!localStorage.getItem('authToken');
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const expirationDate = this.getTokenExpirationDate(token);
+      if (expirationDate && expirationDate > new Date()) {
+        this.setLogoutTimer(token); // Ensure logout timer is set if token is still valid
+        return true;
+      } else {
+        this.logout(); // Token expired, clear the session
+      }
+    }
+    return false;
+  }
+
+  private decodeToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      const decodedPayload = atob(payload);
+      return JSON.parse(decodedPayload);
+    } catch (e) {
+      console.error('Failed to decode token:', e);
+      return null;
+    }
+  }
+
+  private getTokenExpirationDate(token: string): Date | null {
+    const decoded = this.decodeToken(token);
+    if (decoded && decoded.exp) {
+      const date = new Date(0);
+      date.setUTCSeconds(decoded.exp);
+      return date;
+    }
+    return null;
+  }
+
+  private setLogoutTimer(token: string): void {
+    const expirationDate = this.getTokenExpirationDate(token);
+    if (expirationDate) {
+      const expiresIn = expirationDate.getTime() - new Date().getTime();
+      setTimeout(() => this.logout(), expiresIn); // Log out after token expires
+    }
   }
 }
