@@ -19,4 +19,13 @@ export class UsersService {
 
     return this.http.get<any>(`${this.baseUrl}/users`, {headers});
   }
+
+  deleteUser(username: string): Observable<any> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.delete<any>(`${this.baseUrl}/users/${username}`, {headers});
+  }
 }
