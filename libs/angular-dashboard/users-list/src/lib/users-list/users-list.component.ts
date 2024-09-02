@@ -38,4 +38,15 @@ export class UsersListComponent implements OnInit {
       }
     });
   }
+
+  deleteUser(username: string): void {
+    this.usersService.deleteUser(username).subscribe({
+      next: () => {
+        this.users = this.users.filter(user => user.username !== username);
+      },
+      error: (error) => {
+        console.error('Error deleting user:', error);
+      }
+    });
+  }
 }

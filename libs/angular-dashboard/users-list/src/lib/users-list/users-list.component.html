@@ -2,7 +2,8 @@
   <h2>User List</h2>
   <ul>
     <li *ngFor="let user of users">
-      {{ user?.username }}
+      {{ user.username }}
+      <button (click)="deleteUser(user.username)">Delete</button>
     </li>
   </ul>
 </div>
