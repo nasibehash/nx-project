@@ -11,7 +11,7 @@ app.use(cors()); // <-- Use cors middleware
 app.use(bodyParser.json());
 
 // Mock user database
-const users: { [key: string]: { password: string } } = {};
+const users: { [key: string]: { password: string, createdDate: string } } = {};
 
 // Secret key for JWT
 const SECRET_KEY = 'your-secret-key';
@@ -42,10 +42,11 @@ app.post('/register', async (req, res) => {
     return res.status(400).json({message: 'User already exists.'});
   }
 
+  const createdDate = new Date().toISOString(); // Current date in ISO format
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Save user in "database"
-  users[username] = {password: hashedPassword};
+  users[username] = {password: hashedPassword, createdDate};
 
   return res.status(201).json({message: 'User registered successfully.'});
 });
@@ -77,7 +78,10 @@ app.post('/login', async (req, res) => {
 
 // Users list endpoint with authentication
 app.get('/users', authenticateToken, (req, res) => {
-  const userList = Object.keys(users).map(username => ({username}));
+  const userList = Object.keys(users).map(username => ({
+    username,
+    createdDate: users[username].createdDate
+  }));
   return res.status(200).json({users: userList});
 });
 
