@@ -1,6 +1,6 @@
 import {
   ChangeDetectionStrategy,
-  Component, inject,
+  Component, inject, OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,17 +16,20 @@ import { SidebarItem } from '../../sandbox/models/Side-bar-items.model';
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit{
 
   authService = inject(AuthService);
   router = inject(Router);
 
   sidebarItems: SidebarItem[] = [
-    {text: 'home', icon: 'H', link: '/home', isActive: true},
+    {text: 'home', icon: 'H', link: '/home'},
     {text: 'users', icon: 'U', link: '/users'},
     {text: 'groups', icon: 'G', link: '/groups'},
   ];
 
+  ngOnInit(){
+    this.activeateCurrentUrl();
+  }
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/auth/login']);
@@ -39,5 +42,22 @@ export class SideBarComponent {
     }
     item.isActive = true;
     this.router.navigate([`${item.link}`]);
+  }
+
+  private activeateCurrentUrl(): void {
+    const currentUrl = this.router.url;
+    this.sidebarItems.forEach(menuItem => {
+      console.log('dd',currentUrl.includes(menuItem.link!));
+      if (currentUrl.includes(menuItem.link!)) {
+        menuItem.isActive = true;
+      }
+      console.log('currentUrl',this.sidebarItems);
+      // menuItem.subMenu.forEach(subMenuItem => {
+      //   if (currentUrl.includes(subMenuItem.link!)) {
+      //     menuItem.showSubmenu = true;
+      //     subMenuItem.showSubmenu = true;
+      //   }
+      // });
+    });
   }
 }
