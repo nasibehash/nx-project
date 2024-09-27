@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'users',
     loadChildren: () => import('@nx-project/users').then((lib) => lib.usersRoutes),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'packages',
+    loadChildren: () => import('@nx-project/packages').then((lib) => lib.packagesRoutes),
+    canActivate: [AuthGuard]
   }
 ];
 
