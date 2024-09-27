@@ -36,6 +36,9 @@
       "@nx-project/landing-page": [
         "libs/angular-website/landing-page/src/index.ts"
       ],
+      "@nx-project/packages": [
+        "libs/angular-dashboard/packages/src/index.ts"
+      ],
       "@nx-project/ui-component": [
         "libs/shared/common/ui-component/src/index.ts"
       ],
